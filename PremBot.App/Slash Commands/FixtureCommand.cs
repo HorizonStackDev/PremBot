@@ -25,7 +25,6 @@ public class FixtureCommand : ApplicationCommandModule
                                      $"{fixture.Season.EndDate.Substring(0, 4)} ⚽ 🦁";
                 fixtureEmbed.Description = "*Only shows next 25 games and may have some non Premiere League games";
                 fixtureEmbed.Color = DiscordColor.SpringGreen;
-                fixtureEmbed.Timestamp = DateTimeOffset.UtcNow;
             }
 
             foreach (var fixture in fixtures.Take(25))
@@ -38,7 +37,7 @@ public class FixtureCommand : ApplicationCommandModule
                     $"{easternTimeGame.ToString($"MMMM dd, h:mm tt")}\n", inline: true);
             }
 
-            await context.CreateResponseAsync(fixtureEmbed);
+            await context.CreateResponseAsync(fixtureEmbed, ephemeral: true);
         }
         else
         {
@@ -49,7 +48,7 @@ public class FixtureCommand : ApplicationCommandModule
                 Timestamp = DateTimeOffset.UtcNow
             };
 
-            await context.CreateResponseAsync(errorEmbed);
+            await context.CreateResponseAsync(errorEmbed, ephemeral: true);
         }
     }
 }
