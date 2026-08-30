@@ -44,7 +44,7 @@ public class HelpCommand : ApplicationCommandModule
 
         helpEmbed.WithFooter
         ($"Bot Info:  " +
-         $"Version: {serverCount}  •  " +
+         $"Version: 1.2.1  •  " +
          $"Total Servers: {serverCount}  •  " +
          $"Shard: {shardCount}  •  " +
          $"Ping: {ping}"
