@@ -20,7 +20,6 @@ public class StandingsCommand : ApplicationCommandModule
                 Title = $"Premiere League Standings: {season.StartDate.Substring(0, 4)}/" +
                         $"{season.EndDate.Substring(0, 4)} ⚽ 🦁",
                 Color = DiscordColor.SpringGreen,
-                Timestamp = DateTimeOffset.UtcNow
             };
 
             foreach (var standing in standings)
@@ -37,7 +36,7 @@ public class StandingsCommand : ApplicationCommandModule
                     $"Points: {standing.Points}\n", inline: true);
             }
 
-            await context.CreateResponseAsync(standingsEmbed);
+            await context.CreateResponseAsync(standingsEmbed, ephemeral: true);
         }
         else
         {
@@ -48,7 +47,7 @@ public class StandingsCommand : ApplicationCommandModule
                 Timestamp = DateTimeOffset.UtcNow
             };
 
-            await context.CreateResponseAsync(errorEmbed);
+            await context.CreateResponseAsync(errorEmbed, ephemeral: true);
         }
     }
 }
