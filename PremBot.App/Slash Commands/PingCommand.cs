@@ -14,8 +14,7 @@ public class PingCommand : ApplicationCommandModule
         {
             Title = $"Pong 🏓 ``{context.Member.Username}``",
             ImageUrl = "https://i.pinimg.com/originals/15/a0/34/15a034ce504d844d64effa4861cf02e9.gif",
-            Color = DiscordColor.Orange,
-            Timestamp = DateTimeOffset.UtcNow
+            Color = DiscordColor.SpringGreen,
         };
 
         await context.CreateResponseAsync(pingEmbed, ephemeral: true);
