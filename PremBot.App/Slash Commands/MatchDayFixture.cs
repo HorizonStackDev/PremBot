@@ -26,7 +26,6 @@ public class MatchDayFixture : ApplicationCommandModule
                     $"Match Day {Math.Floor(matchDay)} Fixture: {fixture.Season.StartDate.Substring(0, 4)}/" +
                     $"{fixture.Season.EndDate.Substring(0, 4)} ⚽ 🦁";
                 matchDayFixtureEmbed.Color = DiscordColor.SpringGreen;
-                matchDayFixtureEmbed.Timestamp = DateTimeOffset.UtcNow;
             }
 
             foreach (var fixture in matchDayFixture)
@@ -39,7 +38,7 @@ public class MatchDayFixture : ApplicationCommandModule
                     $"{easternTimeGame.ToString($"MMMM dd, h:mm tt")}\n", inline: true);
             }
 
-            await context.CreateResponseAsync(matchDayFixtureEmbed);
+            await context.CreateResponseAsync(matchDayFixtureEmbed, ephemeral: true);
         }
         else
         {
@@ -50,7 +49,7 @@ public class MatchDayFixture : ApplicationCommandModule
                 Timestamp = DateTimeOffset.UtcNow
             };
 
-            await context.CreateResponseAsync(errorEmbed);
+            await context.CreateResponseAsync(errorEmbed, ephemeral: true);
         }
     }
 }
