@@ -12,12 +12,11 @@ public class HelpCommand : ApplicationCommandModule
         var helpEmbed = new DiscordEmbedBuilder()
         {
             Title = "📝 Getting Started",
-            Color = DiscordColor.White,
+            Color = DiscordColor.SpringGreen,
             Description =
                 "Get information about the Premiere League! Type one of the commands below to get started. " +
                 $"PremBot powered by [DSharpPlus 4.4.2]" +
                 $"(https://dsharpplus.github.io/DSharpPlus/index.html) and [Docker](https://www.docker.com/).",
-            Timestamp = DateTimeOffset.UtcNow
         };
 
         helpEmbed.AddField
@@ -44,11 +43,11 @@ public class HelpCommand : ApplicationCommandModule
         var botVersion = context.Client.VersionString;
 
         helpEmbed.WithFooter
-        ($"*Bot Info  •  " +
+        ($"Bot Info:  " +
+         $"Version: {serverCount}  •  " +
          $"Total Servers: {serverCount}  •  " +
          $"Shard: {shardCount}  •  " +
-         $"Ping: {ping}  •  " +
-         $"Version: {botVersion}\n"
+         $"Ping: {ping}"
         );
 
         var addButton = new DiscordLinkButtonComponent
@@ -65,6 +64,6 @@ public class HelpCommand : ApplicationCommandModule
         messageBuilder.AddEmbed(helpEmbed);
         messageBuilder.AddComponents(addButton, apiButton);
 
-        await context.CreateResponseAsync(messageBuilder);
+        await context.CreateResponseAsync(messageBuilder.AsEphemeral());
     }
 }
