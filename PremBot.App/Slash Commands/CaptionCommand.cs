@@ -18,7 +18,7 @@ public class CaptionCommand : ApplicationCommandModule
         {
             Title = caption,
             ImageUrl = image.Url,
-            Color = DiscordColor.Blue,
+            Color = DiscordColor.SpringGreen,
             Timestamp = DateTimeOffset.UtcNow
         };
 
